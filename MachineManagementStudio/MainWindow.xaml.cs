@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MMSLib.Global;
+using MMSLib.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,15 @@ namespace MachineManagementStudio
         public MainWindow()
         {
             InitializeComponent();
+            GlobalConfig.InitializeConnection("MachineManagementDb");
+
+            MachineType machineType = new MachineType()
+            {
+                Name = "IG6-iT"
+            };
+
+            GlobalConfig.Connection.InsertRecord<MachineType>("MachineTypes", machineType);
+
         }
     }
 }

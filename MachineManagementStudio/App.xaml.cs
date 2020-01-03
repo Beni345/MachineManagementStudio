@@ -13,5 +13,7 @@ namespace MachineManagementStudio
     /// </summary>
     public partial class App : Application
     {
+          // Initialize the database connections
+
     }
 }

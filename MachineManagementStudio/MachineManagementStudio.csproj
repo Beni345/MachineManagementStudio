@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MMSLib\MMSLib.csproj">
+      <Project>{fcda408a-652b-4231-ac9c-5f8ca0e4c1c9}</Project>
+      <Name>MMSLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
