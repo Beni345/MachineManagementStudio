@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="MachineManagementStudio.Views.CuttingMachinesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MachineManagementStudio.Views"
+             mc:Ignorable="d" Background="Green"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ComboBox x:Name="MachineTypes" 
+                  SelectedItem="{Binding Path=SelectedMachineType, Mode=OneWayToSource}" DisplayMemberPath="Name"
+                  HorizontalAlignment="Left" Margin="69,63,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="AddMachineType" Content="Add machine type" HorizontalAlignment="Left" Margin="69,117,0,0" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="Machines" HorizontalAlignment="Left" Height="241" Margin="69,175,0,0" VerticalAlignment="Top" Width="601"
+                    SelectedItem="{Binding Path=SelectedMachine, Mode=OneWayToSource}"/>
+
+    </Grid>
+</UserControl>

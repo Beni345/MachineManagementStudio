@@ -36,7 +36,7 @@ namespace MMSLib.DataAccess
             return collection.Find(new BsonDocument()).ToList();
         }
 
-        public T LoadRecordById<T>(string table, Guid id)
+        public T LoadRecordById<T>(string table, ObjectId id)
         {
             var collection = db.GetCollection<T>(table);
             var filter = Builders<T>.Filter.Eq("Id", id);
@@ -51,7 +51,7 @@ namespace MMSLib.DataAccess
         /// <param name="table"></param>
         /// <param name="id"></param>
         /// <param name="record"></param>
-        public void UpsertRecord<T>(string table, Guid id, T record)
+        public void UpsertRecord<T>(string table, ObjectId id, T record)
         {
             var collection = db.GetCollection<T>(table);
 
@@ -61,7 +61,7 @@ namespace MMSLib.DataAccess
                 new ReplaceOptions { IsUpsert = true });
         }
 
-        public void DeleteRecord<T>(string table, Guid id)
+        public void DeleteRecord<T>(string table, ObjectId id)
         {
             var collection = db.GetCollection<T>(table);
             var filter = Builders<T>.Filter.Eq("Id", id);

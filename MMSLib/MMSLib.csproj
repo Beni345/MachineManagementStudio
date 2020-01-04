@@ -79,6 +79,7 @@
     <Compile Include="DataAccess\IDataConnection.cs" />
     <Compile Include="DataAccess\MongoCRUD.cs" />
     <Compile Include="Global\GlobalConfig.cs" />
+    <Compile Include="Models\Machine.cs" />
     <Compile Include="Models\MachineType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
