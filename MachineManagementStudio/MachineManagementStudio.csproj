@@ -69,8 +69,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="EventModels\ExistingMachineEventModel.cs" />
+    <Compile Include="EventModels\UpdateMachineEventModel.cs" />
+    <Compile Include="ViewModels\CaliburnMicroPopupViewModel.cs" />
+    <Compile Include="ViewModels\CaliburnMicroTestViewModel.cs" />
     <Compile Include="ViewModels\CuttingMachinesViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\UpdateCuttingMachineViewModel.cs" />
+    <Compile Include="Views\CaliburnMicroPopupView.xaml.cs">
+      <DependentUpon>CaliburnMicroPopupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaliburnMicroTestView.xaml.cs">
+      <DependentUpon>CaliburnMicroTestView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CuttingMachinesView.xaml.cs">
       <DependentUpon>CuttingMachinesView.xaml</DependentUpon>
     </Compile>
@@ -81,11 +92,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\UpdateCuttingMachineView.xaml.cs">
+      <DependentUpon>UpdateCuttingMachineView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\CaliburnMicroPopupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaliburnMicroTestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CuttingMachinesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UpdateCuttingMachineView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

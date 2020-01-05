@@ -34,16 +34,16 @@ namespace MachineManagementStudio
                 .Where(type => type.Name.EndsWith("ViewModel"))
                 .ToList()
                 .ForEach(viewModelType => _container.RegisterPerRequest(
-                    viewModelType, viewModelType.ToString(), viewModelType));
+                    viewModelType, viewModelType.ToString(), viewModelType));          
 
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            DisplayRootViewFor<ShellViewModel>();
-
             //Datenbank Verbindung Initialisieren
             GlobalConfig.InitializeConnection("MachineManagementDb");
+            DisplayRootViewFor<ShellViewModel>();
+       
         }
 
         protected override object GetInstance(Type service, string key)

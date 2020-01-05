@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MachineManagementStudio.Views"
         mc:Ignorable="d"
+        xmlns:cal="http://www.caliburnproject.org"
         Title="ShellView" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,8 +20,7 @@
             <RowDefinition Height="20"/>
 
         </Grid.RowDefinitions>
-        
-        
+
         <!-- Row 0 -->
         <DockPanel Grid.ColumnSpan="3" Grid.Row="0">
             <Menu DockPanel.Dock="Top">
@@ -32,16 +32,18 @@
                         <MenuItem Header="_Mechanische Version" />
                     </MenuItem>
                     <Separator />
+                    <MenuItem x:Name="LoadCaliburnMicroTestView" Header="_Test" />
+                    <Separator />
                     <MenuItem Header="_Exit" />
                 </MenuItem>
                 <MenuItem Header="_Maschinengruppe">
-                    <MenuItem x:Name="LoadCuttingMachinesView" Header="Wursttrennmaschinen"/>
+                    <MenuItem x:Name="LoadCuttingMachinesView" Header="Wursttrennmaschinen" cal:Message.Attach="[Click] = [ShowPopup]" />
                 </MenuItem>
                
             </Menu>
         </DockPanel>
         <!-- Row 1 -->
         <ContentControl Grid.Row="1" Grid.Column="1" x:Name="ActiveItem" />
-
+        
     </Grid>
 </Window>
