@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using uPLibrary.Networking.M2Mqtt.Messages;
 
 namespace MachineManagementStudio.ViewModels
 {
@@ -19,7 +20,7 @@ namespace MachineManagementStudio.ViewModels
         private MachineType _selectedMachineType;
         private BindableCollection<Machine> _machines = new BindableCollection<Machine>();
         private Machine _selectedMachine;
-        private string _machineNumber = "Test";
+        private string _machineNumber;
         private Machine _selectedMachineToUpdate = new Machine();
         private IEventAggregator _eventAggregator;
 
@@ -51,6 +52,9 @@ namespace MachineManagementStudio.ViewModels
 
             };
 
+            GlobalConfig.MQTTData.IotClient.MqttMsgPublishReceived += IotClient_MqttMsgPublishReceived;
+            GlobalConfig.MQTTData.SubscribeToTopics();
+
             //GlobalConfig.Connection.InsertRecord<MachineType>("MachineTypes", machineType);
             //GlobalConfig.Connection.InsertRecord<Machine>("BindingMachineList_IG5-iT", machine);
 
@@ -58,7 +62,13 @@ namespace MachineManagementStudio.ViewModels
 
         }
 
-     
+  
+        private void IotClient_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        {
+            //MessageBox.Show("Received = " + Encoding.UTF8.GetString(e.Message) + " on topic " + e.Topic);
+            MachineNumber = Encoding.UTF8.GetString(e.Message);
+        }
+
 
         public BindableCollection<MachineType> MachineTypes
         {
@@ -180,7 +190,7 @@ namespace MachineManagementStudio.ViewModels
 
                 _selectedMachine.MachineNumber = SelectedMachineToUpdate.MachineNumber;
 
-
+               
                 GlobalConfig.Connection.UpsertRecord<Machine>("BindingMachineList_" + _selectedMachine.Name, _selectedMachine.Id, _selectedMachine);
                 var machines = GlobalConfig.Connection.LoadRecords<Machine>("BindingMachineList_" + _selectedMachine.Name);
                 Machines = Convert(machines);
@@ -190,11 +200,8 @@ namespace MachineManagementStudio.ViewModels
 
         }
 
+      
 
-        
-
-
-  
         public void LoadCuttingMachineUpdateView()
         {
             if (_selectedMachine != null)

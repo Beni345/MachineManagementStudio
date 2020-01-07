@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MMSLib.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace MachineManagementStudio.ViewModels
     public class CaliburnMicroTestViewModel : Conductor<object>
     {
         private SolidColorBrush _controlBrush = new SolidColorBrush(Color.FromRgb(100, 220, 200));
+
+      
+
 
         /// <summary>
         /// Custom action event bei Mouse enter
@@ -31,5 +35,8 @@ namespace MachineManagementStudio.ViewModels
                 NotifyOfPropertyChange(() => ControlBrush);
             }
         }
+
+    
+
     }
 }

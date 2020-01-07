@@ -2,12 +2,14 @@
 using MachineManagementStudio.EventModels;
 using MMSLib.Global;
 using MMSLib.Models;
+using MMSLib.ModelValidators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MachineManagementStudio.ViewModels
 {
@@ -63,9 +65,27 @@ namespace MachineManagementStudio.ViewModels
         {
             if (_machineUpdate != null)
             {
-                _eventAggregator.PublishOnUIThread(new UpdateMachineEventModel(_machineUpdate));
-                GlobalConfig.Connection.UpsertRecord<Machine>("BindingMachineList_" + _machineUpdate.Name, _machineUpdate.Id, _machineUpdate);
-                this.TryClose();
+
+                // Validate model
+                MachineEntryValidator validator = new MachineEntryValidator();
+                var result = validator.Validate(_machineUpdate);
+
+                if (result.IsValid)
+                {
+                    _eventAggregator.PublishOnUIThread(new UpdateMachineEventModel(_machineUpdate));
+                    GlobalConfig.Connection.UpsertRecord<Machine>("BindingMachineList_" + _machineUpdate.Name, _machineUpdate.Id, _machineUpdate);
+                    this.TryClose();
+                }
+                else
+                {
+                    foreach (var failure in result.Errors)
+                    {
+                        MessageBox.Show(failure.ErrorMessage);
+                    }
+                }
+
+
+             
             }
 
         }

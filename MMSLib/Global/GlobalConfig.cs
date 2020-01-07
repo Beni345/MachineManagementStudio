@@ -1,4 +1,5 @@
 ﻿using MMSLib.DataAccess;
+using MMSLib.MQTT;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,16 @@ namespace MMSLib.Global
     public static class GlobalConfig
     {
         public static IDataConnection Connection { get; private set; }
-        
+        public static IMQTTData MQTTData { get; private set; }
 
         public static void InitializeConnection(string dbName)
         {
             MongoCRUD mongoCRUD = new MongoCRUD(dbName);
             Connection = mongoCRUD;
+
+            MQTTData mQTTData = new MQTTData(ConfigurationManager.AppSettings.Get("MQTTBrokerIP"), 1883);
+            MQTTData = mQTTData;
+
         }
 
         public static string ConnString(string name)
@@ -29,6 +34,6 @@ namespace MMSLib.Global
         {
             return ConfigurationManager.AppSettings.Get(name);
         }
-        
+
     }
 }

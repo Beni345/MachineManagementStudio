@@ -41,6 +41,10 @@
 
         </StackPanel>
 
+        <TextBox TextWrapping="Wrap" 
+                     Text="{Binding Path=MachineNumber, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Margin="340,0,156,0"/>
+
+
         <ContentControl Grid.Row="4" Grid.Column="0" x:Name="ActiveItem" />
 
     </Grid>
