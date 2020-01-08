@@ -16,7 +16,7 @@ namespace MMSLib.MQTT
 
         public MQTTData(string brokerIP,int brokerPort )
         {
-
+            //Test
             //string iotendpoint = "104.45.10.62";
             //int BrokerPort = 1883;
             string ClientId = Guid.NewGuid().ToString();
