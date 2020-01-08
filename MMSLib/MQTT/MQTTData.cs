@@ -21,9 +21,7 @@ namespace MMSLib.MQTT
             //int BrokerPort = 1883;
             string ClientId = Guid.NewGuid().ToString();
 
-
             IotClient = new MqttClient(brokerIP);
-
 
             MttSubscribeInfos.Add(new MQTTSubscribeInfo("+/+/UcMachineSelector_001", MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE));
             MttSubscribeInfos.Add(new MQTTSubscribeInfo("+/+/UcMachineSelector_002", MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE));

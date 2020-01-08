@@ -141,6 +141,7 @@
     <Compile Include="DataAccess\MongoCRUD.cs" />
     <Compile Include="Global\GlobalConfig.cs" />
     <Compile Include="Models\Machine.cs" />
+    <Compile Include="Models\MachineEntry\MachineEntryBase.cs" />
     <Compile Include="Models\MachineType.cs" />
     <Compile Include="ModelValidators\MachineEntryValidator.cs" />
     <Compile Include="MQTT\IMQTTData.cs" />
